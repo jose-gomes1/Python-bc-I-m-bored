@@ -1,2 +1,2 @@
-# Python-bc-I-m-bored
-I'm bored
+# Python because I'm bored
+In here I'll be putting some Python programs I did while bored so...
