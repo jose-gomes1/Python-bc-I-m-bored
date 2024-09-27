@@ -117,9 +117,8 @@ def fnaf1():
                     print("You checked the cameras and saw Foxy. You're safe for now.")
                     animatronics["Foxy"]["checked"] = True
                 else:
-                    print("That's not the correct action against Foxy! He's running down the hall.")
-                    print("Use 'left' to close the left door to send Foxy back.")
-                    response = input("Type 'left' to close the left door: ")
+                    print("That's not the correct action against Foxy! He's running down the left hall.")
+                    response = input("Quick! Close your door: ")
                     if response == 'left':
                         left_door_closed = True
                         print("You closed the left door. Foxy is sent back.")
