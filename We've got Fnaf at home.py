@@ -55,12 +55,13 @@ def display_menu():
 
 
 def fnaf1():
-    global active_game, power_level, right_door_closed, left_door_closed, action_count, animatronics
+    global active_game, power_level, right_door_closed, left_door_closed, action_count, animatronics, hp
     active_game = True
     power_level = 100
     right_door_closed = False
     left_door_closed = False
     action_count = 0  # Reset action count
+    hp = 2
 
     print("FNAF 1 Mini Game\nThe night is starting...\nYou can use right to close the right door, left to close the left door and check to check the cameras")
 
@@ -84,28 +85,31 @@ def fnaf1():
 
             # Player's response to animatronics
             if animatronic == "Freddy":
-                response = input("Freddy is comming: ")
+                response = input("Freddy is coming: ")
                 if response == 'check':
                     print("You checked the cameras and saw Freddy. You're safe for now.")
                     animatronics["Freddy"]["checked"] = True
                 else:
-                    print("That's not the correct action against Freddy! He might come closer...")
+                    print("That's not the correct action against Freddy! He's comming closer...")
+                    hp -= 1
 
             elif animatronic == "Chica":
-                response = input("Chica is comming: ")
+                response = input("Chica is coming: ")
                 if response == 'right':
                     right_door_closed = True
                     print("You closed the right door. Chica is sent back.")
                 else:
                     print("That's not the correct action against Chica! She's coming closer...")
+                    hp -= 2
 
             elif animatronic == "Bonnie":
-                response = input("Bonnie is comming: ")
+                response = input("Bonnie is coming: ")
                 if response == 'left':
                     left_door_closed = True
                     print("You closed the left door. Bonnie is sent back.")
                 else:
                     print("That's not the correct action against Bonnie! He's coming closer...")
+                    hp -= 2
 
             elif animatronic == "Foxy":
                 response = input("Foxy needs to be checked: ")
@@ -119,26 +123,40 @@ def fnaf1():
                     if response == 'left':
                         left_door_closed = True
                         print("You closed the left door. Foxy is sent back.")
+                    else:
+                        left_door_closed = False
+                        print("Foxy got to you.")
+                        hp -= 2
 
             elif animatronic == "Golden Freddy":
-                response = input("Golden Freddy is comming: ")
+                response = input("Golden Freddy is coming: ")
                 if response == 'check':
                     print("You checked the cameras and saw Golden Freddy. You survived this time.")
                     animatronics["Golden Freddy"]["checked"] = True
                 else:
                     print("That's not the correct action against Golden Freddy! He remains a mystery...")
+                    hp -= 1
 
-    if power_level <= 0:
-        print("Power is out! Freddy will try to get you...")
-        if random.random() < 0.5:
-            print("You managed to survive the night!")
-        else:
-            print("Freddy got you. Game over.")
-    elif action_count >= 12:
+        # Check if HP has reached 0
+        if hp <= 0:
+            print("Game over! You lost all your health.")
+            active_game = False
+            break
+
+        # If power runs out during the game loop
+        if power_level <= 0:
+            print("Power is out! Freddy will try to get you...")
+            if random.random() < 0.5:
+                print("You managed to survive the night!")
+            else:
+                print("Freddy got you. Game over.")
+            active_game = False
+            break
+
+    if action_count >= 12:
         print("Congratulations! You survived the night.")
 
-    active_game = False  # Reset game status
-
+    active_game = False
 
 def fnaf2():
     global active_game, player_health, current_enemy, player_turn, healed
