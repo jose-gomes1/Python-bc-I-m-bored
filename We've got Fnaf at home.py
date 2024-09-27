@@ -334,3 +334,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# To add:
+# time to react to the animatronic movement (Fnaf 1, 3 and maybe 4)
+# various ways to die (Fnaf 1)
