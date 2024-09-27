@@ -388,4 +388,4 @@ if __name__ == "__main__":
     main()
 
 # To add:
-# time to react to the animatronic movement (Fmaybe 4)
+# think about it later
