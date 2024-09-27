@@ -1,6 +1,7 @@
 import random
 import time
 import sys
+import threading
 
 # Global variables for FNAF 1
 active_game = False
@@ -53,6 +54,37 @@ def display_menu():
     print("4. Nightmare")
     print("0. Exit")
 
+def timed_input(prompt, timeout=5):
+    response = [None]  # Use a list to hold the response as Python does not allow variable assignment in nested functions.
+    
+    # Function to capture input
+    def get_input():
+        response[0] = input(prompt)
+    
+    # Start the input thread
+    input_thread = threading.Thread(target=get_input)
+    input_thread.daemon = True  # Set as daemon so it won't block the program from exiting
+    input_thread.start()
+    
+    # Wait for the thread to finish or timeout
+    input_thread.join(timeout)
+    
+    # If the thread is still active after the timeout, it means the user didn't input in time
+    if input_thread.is_alive():
+        return None  # Return None if the timeout occurs and no input was given
+    
+    return response[0]  # Return the actual response if input was provided in time
+
+def get_timeout(aggression, max_time=20):
+    return max(7.5, max_time - aggression)
+
+def reset_game():
+    global power_level, right_door_closed, left_door_closed, action_count, hp
+    power_level = 100
+    right_door_closed = False
+    left_door_closed = False
+    action_count = 0
+    hp = 2
 
 def fnaf1():
     global active_game, power_level, right_door_closed, left_door_closed, action_count, animatronics, hp
@@ -62,6 +94,8 @@ def fnaf1():
     left_door_closed = False
     action_count = 0  # Reset action count
     hp = 2
+
+    reset_game()
 
     print("FNAF 1 Mini Game\nThe night is starting...\nYou can use right to close the right door, left to close the left door and check to check the cameras")
 
@@ -85,7 +119,7 @@ def fnaf1():
 
             # Player's response to animatronics
             if animatronic == "Freddy":
-                response = input("Freddy is coming: ")
+                response = timed_input("Freddy is coming: ", timeout=get_timeout(aggression))
                 if response == 'check':
                     print("You checked the cameras and saw Freddy. You're safe for now.")
                     animatronics["Freddy"]["checked"] = True
@@ -94,7 +128,7 @@ def fnaf1():
                     hp -= 1
 
             elif animatronic == "Chica":
-                response = input("Chica is coming: ")
+                response = timed_input("Chica is coming: ", timeout=get_timeout(aggression))
                 if response == 'right':
                     right_door_closed = True
                     print("You closed the right door. Chica is sent back.")
@@ -103,7 +137,7 @@ def fnaf1():
                     hp -= 2
 
             elif animatronic == "Bonnie":
-                response = input("Bonnie is coming: ")
+                response = timed_input("Bonnie is coming: ", timeout=get_timeout(aggression))
                 if response == 'left':
                     left_door_closed = True
                     print("You closed the left door. Bonnie is sent back.")
@@ -112,13 +146,13 @@ def fnaf1():
                     hp -= 2
 
             elif animatronic == "Foxy":
-                response = input("Foxy needs to be checked: ")
+                response = timed_input("Foxy needs to be checked: ", timeout=get_timeout(aggression))
                 if response == 'check':
                     print("You checked the cameras and saw Foxy. You're safe for now.")
                     animatronics["Foxy"]["checked"] = True
                 else:
                     print("That's not the correct action against Foxy! He's running down the left hall.")
-                    response = input("Quick! Close your door: ")
+                    response = timed_input("Quick! Close your door: ", timeout=get_timeout(aggression))
                     if response == 'left':
                         left_door_closed = True
                         print("You closed the left door. Foxy is sent back.")
@@ -128,7 +162,7 @@ def fnaf1():
                         hp -= 2
 
             elif animatronic == "Golden Freddy":
-                response = input("Golden Freddy is coming: ")
+                response = timed_input("Golden Freddy is coming: ", timeout=get_timeout(aggression))
                 if response == 'check':
                     print("You checked the cameras and saw Golden Freddy. You survived this time.")
                     animatronics["Golden Freddy"]["checked"] = True
@@ -138,7 +172,7 @@ def fnaf1():
 
         # Check if HP has reached 0
         if hp <= 0:
-            print("Game over! You lost all your health.")
+            print("Game over! You got jumpscared.")
             active_game = False
             break
 
@@ -346,6 +380,7 @@ def main():
         elif choice == '0':
             print("Exiting the game. Goodbye!")
             sys.exit()  # Exit the program
+            break
         else:
             print("Invalid choice, please try again.")
 
@@ -353,4 +388,4 @@ if __name__ == "__main__":
     main()
 
 # To add:
-# time to react to the animatronic movement (Fnaf 1, 3 and maybe 4)
+# time to react to the animatronic movement (Fmaybe 4)
