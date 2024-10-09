@@ -47,6 +47,7 @@ player_actions = 0
 
 
 def display_menu():
+    print("==================================================")
     print("Welcome to the Five Nights at Freddy's Mini-Games!")
     print("Choose your mode:")
     print("1. Fnaf 1")
@@ -54,6 +55,7 @@ def display_menu():
     print("3. Frights")
     print("4. Nightmare")
     print("0. Exit")
+    print("==================================================")
 
 def timed_input(prompt, timeout=5):
     response = [None]  # Use a list to hold the response as Python does not allow variable assignment in nested functions.
