@@ -2,6 +2,7 @@ import random
 import time
 import sys
 import threading
+import os
 
 # Global variables for FNAF 1
 active_game = False
@@ -367,6 +368,8 @@ def fnaf4():
 
 def main():
     while True:
+        time.sleep(1.5)
+        os.system("clear")
         display_menu()
         choice = input("Enter your choice: ").strip()
         if choice == '1':
