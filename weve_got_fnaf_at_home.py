@@ -490,7 +490,7 @@ def ffps():
 def main():
     while True:
         time.sleep(1.5)
-        os.system("clear")
+        os.system("clear || cls")
         display_menu()
         choice = input("Enter your choice: ").strip()
         if choice == '1':
