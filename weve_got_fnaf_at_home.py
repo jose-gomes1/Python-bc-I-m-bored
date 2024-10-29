@@ -45,6 +45,21 @@ max_nightmarionne_moves = 5
 max_player_actions = 10
 player_actions = 0
 
+# Global variables for Sister Location
+repair_tasks = 5
+mangle_distance = 0
+max_mangle_distance = 3
+active_game_sister_location = False
+
+# Global variables for the salvage mini-game
+active_game_salvage = False
+salvage_animatronics = {
+    "Molten Freddy": {"difficulty": 0.7, "salvage_value": 100},
+    "Scraptrap": {"difficulty": 0.5, "salvage_value": 150},
+    "Scrap Baby": {"difficulty": 0.4, "salvage_value": 200},
+    "Lefty": {"difficulty": 0.3, "salvage_value": 250}
+}
+taser_uses = 3
 
 def display_menu():
     print("==================================================")
@@ -54,6 +69,8 @@ def display_menu():
     print("2. Punch 2 Fnaf")
     print("3. Frights")
     print("4. Nightmare")
+    print("5. Vent Repair")
+    print("6. Salvage")
     print("0. Exit")
     print("==================================================")
 
