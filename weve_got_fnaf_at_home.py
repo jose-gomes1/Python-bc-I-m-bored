@@ -368,6 +368,108 @@ def fnaf4():
         else:
             print("Invalid action. Type 'flash' or 'wait'.")
 
+def fnafsl():
+    global active_game_sister_location, repair_tasks, mangle_distance
+    active_game_sister_location = True
+    repair_tasks = 5
+    mangle_distance = 0
+
+    print("Sister Location Vent Repair Mini-Game")
+    print("Repair the vents while keeping Mangle at bay!")
+
+    while active_game_sister_location and repair_tasks > 0:
+        action = input("Choose action (repair/check): ").strip().lower()
+
+        if action == "repair":
+            if random.random() < 0.45:  # 45% chance to successfully repair
+                repair_tasks -= 1
+                print(f"Repair successful! Tasks remaining: {repair_tasks}")
+            else:
+                print("Repair failed! Mangle is getting closer.")
+                mangle_distance += 1
+
+        elif action == "check":
+            if mangle_distance > 0:
+                print("You checked the vents and saw Mangle. She has been pushed back.")
+                mangle_distance -= 1
+            else:
+                print("The vents are clear. No sign of Mangle.")
+
+        else:
+            print("Invalid action. Type 'repair' or 'check'.")
+
+        # Check if Mangle has reached the player
+        if mangle_distance >= max_mangle_distance:
+            print("Mangle got to you! Game over.")
+            active_game_sister_location = False
+            break
+
+    if repair_tasks == 0:
+        print("Congratulations! You successfully repaired the vents and survived!")
+
+def ffps():
+    global active_game_salvage, taser_uses
+    active_game_salvage = True
+
+    print("FNAF 6 Salvage Mini-Game")
+    print("You will attempt to salvage an animatronic. Choose wisely!")
+
+    # Randomly choose an animatronic to salvage
+    animatronic = random.choice(list(salvage_animatronics.keys()))
+    print(f"\nYou encountered {animatronic}!")
+
+    phase = "SLEEP MODE"  # Start in Sleep Mode
+
+    while active_game_salvage:
+        print(f"\nCurrent phase: {phase}")
+        action = input("Choose action (salvage/check/throw): ").strip().lower()
+
+        if action == "throw":
+            print(f"You decided to throw {animatronic} back into the alley.")
+            print("You've chosen the easy way out. Expect to be fired at the end of the week for this choice.")
+            active_game_salvage = False  # End the game on throw
+            continue
+
+        elif action == "check":
+            if phase == "SLEEP MODE":
+                print("You carefully check the animatronic...")
+                phase = "ACTIVE MODE"  # Move to Active Mode
+                print("The animatronic is now aware of you! It seems agitated...")
+            else:
+                print("You can only check the animatronic when it's in Sleep Mode!")
+
+        elif action == "salvage":
+            if phase == "ACTIVE MODE":
+                print("You attempt to proceed with the salvage checklist...")
+                success_chance = salvage_animatronics[animatronic]["difficulty"]
+                if random.random() < success_chance:
+                    salvage_value = salvage_animatronics[animatronic]["salvage_value"]
+                    print(f"You successfully completed the salvage checklist!")
+                    print(f"You salvaged {animatronic} for {salvage_value} points!")
+                    active_game_salvage = False  # End the game on success
+                else:
+                    print(f"{animatronic} is becoming agitated!")
+                    phase = "AGGRESSIVE MODE"  # Move to Aggressive Mode
+                    if taser_uses > 0:
+                        taser_action = input("The animatronic is aggressive! Use taser? (yes/no): ").strip().lower()
+                        if taser_action == "yes":
+                            taser_uses -= 1
+                            print(f"You used the taser. Remaining uses: {taser_uses}")
+                            if taser_uses == 0:
+                                print("Warning: Taser is out of uses and may damage the animatronic!")
+                            phase = "SLEEP MODE"  # Reset phase after using taser
+                        else:
+                            print(f"You hesitated and {animatronic} attacked you! Game over.")
+                            active_game_salvage = False  # End the game on failure
+                    else:
+                        print("You have no taser uses left! The animatronic attacks!")
+                        active_game_salvage = False  # End the game on failure
+            else:
+                print("You cannot salvage in the current phase! Check the animatronic first.")
+
+        else:
+            print("Invalid action. Type 'salvage', 'check', or 'throw'.")
+
 def main():
     while True:
         time.sleep(1.5)
@@ -382,10 +484,13 @@ def main():
             fnaf3()
         elif choice == '4':
             fnaf4()
+        elif choice == '5':
+            fnafsl()
+        elif choice == '6':
+            ffps()
         elif choice == '0':
             print("Exiting the game. Goodbye!")
             sys.exit()  # Exit the program
-            break
         else:
             print("Invalid choice, please try again.")
 
