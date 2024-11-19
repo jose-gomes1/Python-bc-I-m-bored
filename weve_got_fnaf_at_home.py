@@ -63,16 +63,16 @@ taser_uses = 3
 
 animatronics = [
     "Freddy", "Bonnie", "Chica", "Foxy", "Golden Freddy", "Springtrap",
-    "Ballora", "Circus Baby", "Ennard", "Molten Freddy", "Scrap Baby",
-    "Lefty", "Rockstar Freddy", "Rockstar Bonnie", "Rockstar Chica",
-    "Rockstar Foxy", "Happy Frog", "Mr. Hippo", "Orville Elephant",
-    "Pigpatch", "Funtime Freddy", "Funtime Foxy", "Nightmare",
-    "Nightmare Fredbear", "Nightmare Bonnie", "Nightmare Chica",
-    "Nightmare Foxy", "Nightmare Balloon Boy", "Phantom Freddy",
+    "Ballora", "Circus Baby", "Ennard", "Molten Freddy", "Scrap Baby", "Scraptrap",
+    "Dark Springtrap", "Lefty", "Rockstar Freddy", "Rockstar Bonnie", "Rockstar Chica",
+    "Rockstar Foxy", "Carnie", "Happy Frog", "Mr. Hippo", "Orville Elephant",
+    "Nedd Bear", "Pigpatch", "Funtime Freddy", "Funtime Foxy", "Funtime Chica", "Nightmare",
+    "Nightmare Fredbear", "Nightmare Freddy", "Nightmare Bonnie", "Nightmare Chica",    
+    "Nightmare Foxy", "Nightmare Mangle", "Nightmare Balloon Boy", "Phantom Freddy",
     "Phantom Chica", "Phantom Foxy", "Phantom Balloon Boy", "Phantom Puppet",
-    "Shadow Freddy", "RWQFSFASXC", "Helpy", "Trash and the Gang", 
+    "Phantom Mangle", "Shadow Freddy", "RWQFSFASXC", "Helpy", "Trash and the Gang", 
     "Dee Dee", "XOR", "Old Man Consequences", "Vengeful Spirit",
-    "Toy Freddy", "Toy Chica", "Toy Bonnie", "Mangle", "Balloon Boy",
+    "Toy Freddy", "Toy Chica", "Toy Bonnie", "Mangle", "Balloon Boy", "Puppet",
     "JJ", "Withered Freddy", "Withered Bonnie", "Withered Chica", "Withered Foxy",
     "Withered Golden Freddy", "Bidibab", "Electrobab", "Minireena", "Bon Bon",
     "Bonnet", "Yenndo", "Music Man", "Glamrock Freddy", "Glamrock Chica",
@@ -81,9 +81,10 @@ animatronics = [
     "STAFF Bot", "Map Bot", "Mask Bot", "The Mimic", "Shattered Roxy", "Shattered Monty",
     "Shattered Chica", "Glamrock Bonnie", "MXES", "Ruined Chica", "Ruined Roxy", "Ruined Monty",
     "Ruined DJ Music Man", "Ruined Wind-Up Music Man", "Nightmare Staff Bot", 
-    "Jack-O-Chica", "Jack-O-Bonnie", "Nightmarionne", "Plushtrap",
-    "Jack-O-Moon", "Eclipse", "Ruined Freddy", "Springbonnie", "Fredbear", "Mystic Hippo",
-    "Freddy Frostbear", "8-Bit Baby", "Endo-01", "Endo-02", "Nightmare Endo", "Glamrock Endo"
+    "Jack-O-Chica", "Jack-O-Bonnie", "Nightmarionne", "Plushtrap", "Security Puppet", "Captain Foxy",
+    "Jack-O-Moon", "Eclipse", "Ruined Freddy", "Springbonnie", "Fredbear", "Mystic Hippo", "Wet Floor Bot",
+    "Freddy Frostbear", "8-Bit Baby", "Endo-01", "Endo-02", "Nightmare Endo", "Glamrock Endo", "Freddles",
+    "Grimm Foxy", "Lolbit", "Lemonade Clown", "Fruit Punch Clown", "Jackie", "Head Chef Bot", "Hand Unit"
 ]
 
 def display_menu():
