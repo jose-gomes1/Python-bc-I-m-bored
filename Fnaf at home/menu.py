@@ -1,0 +1,13 @@
+def display_menu():
+    print("==================================================")
+    print("Welcome to the Five Nights at Freddy's Mini-Games!")
+    print("Choose your mode:")
+    print("1. Fnaf 1")
+    print("2. Punch 2 Fnaf")
+    print("3. Frights")
+    print("4. Nightmare")
+    print("5. Vent Repair")
+    print("6. Salvage")
+    print("7. Guessing Game")
+    print("0. Exit")
+    print("==================================================")
