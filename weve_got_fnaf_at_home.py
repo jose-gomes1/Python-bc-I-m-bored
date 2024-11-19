@@ -92,7 +92,6 @@ fnaf = [
 ]
 
 def display_menu():
-    print(len(fnaf))
     print("==================================================")
     print("Welcome to the Five Nights at Freddy's Mini-Games!")
     print("Choose your mode:")
