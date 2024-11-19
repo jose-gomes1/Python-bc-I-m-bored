@@ -69,8 +69,21 @@ animatronics = [
     "Pigpatch", "Funtime Freddy", "Funtime Foxy", "Nightmare",
     "Nightmare Fredbear", "Nightmare Bonnie", "Nightmare Chica",
     "Nightmare Foxy", "Nightmare Balloon Boy", "Phantom Freddy",
-    "Phantom Chica", "Phantom Foxy", "Phantom Balloon Boy",
-    "Shadow Freddy", "Shadow Bonnie", "Helpy", "Trash and the Gang"
+    "Phantom Chica", "Phantom Foxy", "Phantom Balloon Boy", "Phantom Puppet",
+    "Shadow Freddy", "RWQFSFASXC", "Helpy", "Trash and the Gang", 
+    "Dee Dee", "XOR", "Old Man Consequences", "Vengeful Spirit",
+    "Toy Freddy", "Toy Chica", "Toy Bonnie", "Mangle", "Balloon Boy",
+    "JJ", "Withered Freddy", "Withered Bonnie", "Withered Chica", "Withered Foxy",
+    "Withered Golden Freddy", "Bidibab", "Electrobab", "Minireena", "Bon Bon",
+    "Bonnet", "Yenndo", "Music Man", "Glamrock Freddy", "Glamrock Chica",
+    "Montegomery Gator", "Roxanne Wolf", "DJ Music Man", "Wind-Up Music Man",
+    "Glitchtrap", "Dreadbear", "Vanny", "Helpi", "Burntrap", "Tangle", "Sun", "Moon",
+    "STAFF Bot", "Map Bot", "Mask Bot", "The Mimic", "Shattered Roxy", "Shattered Monty",
+    "Shattered Chica", "Glamrock Bonnie", "MXES", "Ruined Chica", "Ruined Roxy", "Ruined Monty",
+    "Ruined DJ Music Man", "Ruined Wind-Up Music Man", "Nightmare Staff Bot", 
+    "Jack-O-Chica", "Jack-O-Bonnie", "Nightmarionne", "Plushtrap",
+    "Jack-O-Moon", "Eclipse", "Ruined Freddy", "Springbonnie", "Fredbear", "Mystic Hippo",
+    "Freddy Frostbear", "8-Bit Baby", "Endo-01", "Endo-02", "Nightmare Endo", "Glamrock Endo"
 ]
 
 def display_menu():
