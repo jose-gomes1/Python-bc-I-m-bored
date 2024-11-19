@@ -61,6 +61,18 @@ salvage_animatronics = {
 }
 taser_uses = 3
 
+animatronics = [
+    "Freddy", "Bonnie", "Chica", "Foxy", "Golden Freddy", "Springtrap",
+    "Ballora", "Circus Baby", "Ennard", "Molten Freddy", "Scrap Baby",
+    "Lefty", "Rockstar Freddy", "Rockstar Bonnie", "Rockstar Chica",
+    "Rockstar Foxy", "Happy Frog", "Mr. Hippo", "Orville Elephant",
+    "Pigpatch", "Funtime Freddy", "Funtime Foxy", "Nightmare",
+    "Nightmare Fredbear", "Nightmare Bonnie", "Nightmare Chica",
+    "Nightmare Foxy", "Nightmare Balloon Boy", "Phantom Freddy",
+    "Phantom Chica", "Phantom Foxy", "Phantom Balloon Boy",
+    "Shadow Freddy", "Shadow Bonnie", "Helpy", "Trash and the Gang"
+]
+
 def display_menu():
     print("==================================================")
     print("Welcome to the Five Nights at Freddy's Mini-Games!")
@@ -71,6 +83,7 @@ def display_menu():
     print("4. Nightmare")
     print("5. Vent Repair")
     print("6. Salvage")
+    print("7. Guessing Game")
     print("0. Exit")
     print("==================================================")
 
@@ -487,6 +500,64 @@ def ffps():
         else:
             print("Invalid action. Type 'salvage', 'check', or 'throw'.")
 
+def guess():
+    # Initialize game variables
+    chosen_name = random.choice(animatronics).lower()  # Choose random animatronic
+    guessed_letters = set()  # Track letters guessed by the player
+    attempts = 7  # Number of allowed wrong guesses
+    active_game = True
+
+    # Prepare display with underscores and spaces for multi-word names
+    display = ["_" if char.isalpha() else char for char in chosen_name]
+
+    print("Welcome to the FNAF Guessing Game!")
+    print("Guess the animatronic's name:")
+    print(" ".join(display))
+
+    while active_game:
+        # Display current progress
+        print("\nCurrent name: " + " ".join(display))
+        print(f"Guessed letters: {', '.join(sorted(guessed_letters))}")
+        print(f"Remaining attempts: {attempts}")
+
+        # Player input
+        guess = input("Guess a letter or the full name: ").lower()
+
+        # If the player guesses the full name
+        if guess == chosen_name:
+            print(f"Congratulations! You guessed it: {chosen_name.title()}")
+            active_game = False
+            break
+
+        # If the player guesses a letter
+        elif len(guess) == 1 and guess.isalpha():
+            if guess in guessed_letters:
+                print(f"You already guessed '{guess}'. Try again!")
+            elif guess in chosen_name:
+                print(f"Good guess! '{guess}' is in the name.")
+                guessed_letters.add(guess)
+                # Update display with correctly guessed letter
+                for idx, char in enumerate(chosen_name):
+                    if char == guess:
+                        display[idx] = guess
+            else:
+                print(f"Sorry, '{guess}' is not in the name.")
+                guessed_letters.add(guess)
+                attempts -= 1
+
+        else:
+            print("Invalid input. Please guess a single letter or the full name.")
+
+        # Check if the player has won
+        if "_" not in display:
+            print(f"Congratulations! You guessed it: {chosen_name.title()}")
+            active_game = False
+
+        # Check if the player has run out of attempts
+        if attempts == 0:
+            print(f"Game over! The animatronic was: {chosen_name.title()}")
+            active_game = False
+
 def main():
     while True:
         time.sleep(1.5)
@@ -505,6 +576,8 @@ def main():
             fnafsl()
         elif choice == '6':
             ffps()
+        elif choice == '7':
+            guess()
         elif choice == '0':
             print("Exiting the game. Goodbye!")
             sys.exit()  # Exit the program
