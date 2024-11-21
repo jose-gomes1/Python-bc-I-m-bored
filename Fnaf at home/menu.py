@@ -8,6 +8,7 @@ def display_menu():
     print("4. Nightmare")
     print("5. Vent Repair")
     print("6. Salvage")
-    print("7. Guessing Game")
+    print("7. Character Guessing Game")
+    print("8. Book Guessing Game")
     print("0. Exit")
     print("==================================================")

@@ -23,6 +23,8 @@ def main():
             fnafs.ffps.ffps()
         elif choice == '7':
             fnafs.guess.guess()
+        elif choice == '8':
+            fnafs.books.choose_category()
         elif choice == '0':
             print("Exiting the game. Goodbye!")
             sys.exit()  # Exit the program

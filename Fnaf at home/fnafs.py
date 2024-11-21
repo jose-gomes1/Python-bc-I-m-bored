@@ -5,7 +5,5 @@ import fnaf4
 import fnafsl
 import ffps
 import guess
+import books
 import menu
-
-def a():
-    menu.display_menu
